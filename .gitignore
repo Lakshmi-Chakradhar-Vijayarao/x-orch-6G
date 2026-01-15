@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+venv/
+
+# OS
+.DS_Store
+
+# Experiment outputs
+logs/
+results/
+plots/

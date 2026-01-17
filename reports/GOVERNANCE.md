@@ -1,34 +1,60 @@
-# Governance & Policy Health
+# Governance in X-ORCH-6G
 
-Governance logic evaluates long-term policy behavior.
-
----
-
-## Policy Health Metrics
-
-Tracked metrics:
-- Switch rate
-- Action entropy
-- NO_OP ratio
+Governance is treated as a **safety constraint**, not an optimization tool.
 
 ---
 
-## Risk Classification
+## 1. Motivation
 
-Risk levels:
-- LOW: Stable, conservative behavior
-- MEDIUM: Reactive but bounded
-- HIGH: Oscillatory, unstable
+Autonomous systems must operate under uncertainty.
+Unconstrained autonomy can lead to unsafe behavior.
 
-Current experiments classify MARL behavior as **MEDIUM risk**, which is acceptable for dynamic systems.
+Governance exists to:
+- Constrain risk
+- Enforce conservative behavior
+- Support auditability
 
 ---
 
-## LLM Audit Role
+## 2. Risk-Aware Gate
 
-LLMs are used exclusively to:
-- Explain decisions
-- Highlight risks
-- Suggest caution
+A governance gate evaluates:
+- Action risk level
+- System uncertainty
 
-They never influence control actions.
+If risk exceeds acceptable bounds:
+- The action is overridden with NO_OP.
+
+---
+
+## 3. Governance Does Not Optimize
+
+Governance:
+- Does not modify rewards
+- Does not accelerate recovery
+- Does not influence learning
+
+It only constrains unsafe execution.
+
+---
+
+## 4. Empirical Findings
+
+Experiments show:
+- Governance reduces unsafe actions
+- Recovery time remains unchanged
+- Safety guarantees improve
+
+This reflects real-world infrastructure constraints.
+
+---
+
+## 5. Governance vs Control
+
+| Component | Role |
+|--------|------|
+| MARL | Proposes actions |
+| Governance | Constrains actions |
+| Explainability | Explains actions |
+
+This separation is intentional and non-negotiable.

@@ -1,0 +1,7 @@
+{
+  "uncertainty_threshold": 0.8,
+  "total_actions": 50,
+  "raw_no_op_ratio": 0.08,
+  "forced_no_op_ratio": 0.0,
+  "effective_no_op_ratio": 0.08
+}

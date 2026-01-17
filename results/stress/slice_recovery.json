@@ -1,0 +1,11 @@
+{
+  "mMTC": {
+    "recovery_time": 41
+  },
+  "URLLC": {
+    "recovery_time": 34
+  },
+  "eMBB": {
+    "recovery_time": 33
+  }
+}

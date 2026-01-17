@@ -3,13 +3,14 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-.env
+
+# Virtual environments
 venv/
+.env
+
+# Results & artifacts (optional but recommended)
+results/**/tmp/
+figures/*.tmp
 
 # OS
 .DS_Store
-
-# Experiment outputs
-logs/
-results/
-plots/

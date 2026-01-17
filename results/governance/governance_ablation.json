@@ -1,0 +1,20 @@
+{
+  "marl_no_governance": {
+    "governance": false,
+    "strict": false,
+    "recovery_time": 21,
+    "sla_violation_duration": 67
+  },
+  "marl_governance": {
+    "governance": true,
+    "strict": false,
+    "recovery_time": 21,
+    "sla_violation_duration": 67
+  },
+  "marl_governance_strict": {
+    "governance": true,
+    "strict": true,
+    "recovery_time": 21,
+    "sla_violation_duration": 67
+  }
+}

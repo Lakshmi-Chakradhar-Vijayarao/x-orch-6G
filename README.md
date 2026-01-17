@@ -1,3 +1,4 @@
+---
 
 # **X-ORCH-6G**
 
@@ -9,29 +10,29 @@
 
 **X-ORCH-6G** is a **system-level research simulator** for studying **autonomous orchestration under uncertainty** in future **6G cloud–edge–far-edge compute continuums**.
 
-Unlike most AI-driven orchestration systems that focus solely on optimization, this project explicitly investigates:
+Rather than optimizing solely for performance, this project investigates a more fundamental and often ignored systems question:
 
-> **When an autonomous system should abstain from acting instead of making risky decisions.**
+> **When should an autonomous orchestration system abstain from acting instead of making a risky decision?**
 
-The system integrates **multi-agent reinforcement learning (MARL)** with **stability control, uncertainty awareness, failure modeling, explainability, and governance**, while remaining:
+The system integrates **multi-agent reinforcement learning (MARL)** with **explicit stability control, uncertainty awareness, failure modeling, explainability, and governance**, while remaining:
 
 * fully reproducible,
 * CPU-only,
 * interpretable by design,
 * and suitable for PhD-level research and evaluation.
 
-This repository is **not a demo** and **not a product**.
-It is a **research platform** for studying decision legitimacy and safety in autonomous networked systems.
+This repository is **not a demo** and **not a production system**.
+It is a **research platform** for studying **decision legitimacy, safety, and restraint** in autonomous networked systems.
 
 ---
 
 ## 🎯 Core Research Question
 
-> **How can an autonomous orchestration system detect when its learned policy is operating outside its reliable knowledge regime, and enforce safe abstention instead of aggressive optimization?**
+> **How can an autonomous orchestration system detect when its learned policy is operating outside its reliable knowledge regime and enforce safe abstention instead of aggressive optimization?**
 
-This reframes orchestration from *“always act optimally”* to:
+This reframes orchestration from *“always act optimally”* toward:
 
-* stability first,
+* stability-first control,
 * uncertainty-aware decision making,
 * governance-constrained autonomy.
 
@@ -46,7 +47,7 @@ This reframes orchestration from *“always act optimally”* to:
 * Workflow-aware service orchestration
 * Multi-agent reinforcement learning (PPO-based)
 * Stability, oscillation, and recovery analysis
-* Uncertainty-aware abstention (NO_OP)
+* Uncertainty-aware abstention (**NO_OP**)
 * Governance and policy health monitoring
 * Explainability and post-hoc auditability
 * Fully deterministic and reproducible experiments
@@ -60,7 +61,7 @@ This reframes orchestration from *“always act optimally”* to:
 * No production deployment claims
 * No state-of-the-art performance claims
 
-These exclusions are **deliberate design choices**, not limitations.
+These exclusions are **intentional design choices**, not limitations.
 
 ---
 
@@ -92,12 +93,12 @@ Explainability & Audit
 (traces, attribution, reports)
 ```
 
-**Key principle:**
+**Design principle (strictly enforced):**
 
-> RL controls actions.
+> RL proposes actions.
 > Governance constrains actions.
 > Explainability explains actions.
-> Nothing else interferes.
+> No component violates this separation.
 
 ---
 
@@ -105,26 +106,26 @@ Explainability & Audit
 
 ### Node Types
 
-* **Cloud** – high capacity, higher latency
-* **Edge** – medium capacity, low latency
-* **Far-Edge / IoT** – low capacity, intermittent
+* **Cloud** — high capacity, higher latency
+* **Edge** — medium capacity, low latency
+* **Far-Edge / IoT** — low capacity, intermittent
 
 ### Graph Representation
 
-Implemented using **NetworkX** with:
+The continuum is modeled using **NetworkX**, capturing:
 
-* node capacities,
-* utilization,
-* latency edges,
+* heterogeneous node capacities,
+* utilization dynamics,
+* latency-weighted links,
 * failure sensitivity.
 
-No deep graph embeddings are used to preserve interpretability.
+No deep graph embeddings or GNNs are used, preserving interpretability and stability.
 
 ---
 
 ## 🔗 Workflow-Aware Services
 
-Workflows are modeled as **end-to-end services**, not isolated tasks.
+Services are modeled as **end-to-end workflows**, not isolated tasks.
 
 Each workflow includes:
 
@@ -132,7 +133,7 @@ Each workflow includes:
 * priority,
 * slice type (eMBB / URLLC / mMTC).
 
-This enforces realistic **end-to-end reasoning**, consistent with 6G service pipelines.
+This enforces realistic **end-to-end reasoning**, aligned with 6G service semantics and pipeline-style applications.
 
 ---
 
@@ -143,15 +144,15 @@ Each agent observes a fixed-size, engineered state vector including:
 * local and global CPU utilization,
 * workflow load indicators,
 * stress and failure signals,
-* time progression.
+* normalized time progression.
 
-No learned embeddings → stable, auditable behavior.
+No learned embeddings are used, enabling **auditable and stable behavior**.
 
 ---
 
 ## 🎛 Action Space
 
-Each agent can choose:
+Each agent can select from:
 
 | Action           | Description                    |
 | ---------------- | ------------------------------ |
@@ -161,20 +162,20 @@ Each agent can choose:
 | SCALE_DOWN       | Reduce allocated resources     |
 | **NO_OP**        | Abstain from action            |
 
-**NO_OP is mandatory** and treated as a first-class safety mechanism.
+**NO_OP is mandatory** and treated as a **first-class safety mechanism**, not a fallback.
 
 ---
 
 ## 🎯 Reward Function
 
-Multi-objective reward with explicit logging:
+The reward function is multi-objective and explicitly decomposed:
 
 * latency penalty
 * SLA violation penalty
 * migration cost
 * stability considerations
 
-Each component is logged separately for analysis and ablation.
+Each component is logged independently to support ablation and analysis rather than opaque optimization.
 
 ---
 
@@ -185,7 +186,7 @@ Each component is logged separately for analysis and ablation.
 * Fixed random seeds
 * Deterministic experiments
 
-Centralized critics and parameter sharing are intentionally deferred.
+Centralized critics and parameter sharing are intentionally deferred to maintain clarity and convergence stability.
 
 ---
 
@@ -227,9 +228,9 @@ The system is evaluated for **graceful degradation**, not peak performance.
 
 ### Optional LLM Usage
 
-* Post-hoc explanation only
+* Strictly post-hoc explanation
 * Zero control authority
-* Used for audit and human interpretation
+* Used only for audit and human interpretation
 
 ---
 
@@ -249,12 +250,12 @@ The system is evaluated for **graceful degradation**, not peak performance.
 * Recovery time
 * Oscillation count
 * Abstention frequency
-* Policy stability
+* Policy stability indicators
 
 ### Key Findings
 
-* Abstention reduces oscillations
-* Governance improves safety
+* Abstention reduces oscillatory behavior
+* Governance improves safety guarantees
 * Recovery time is environment-limited
 
 ---
@@ -279,7 +280,7 @@ figures/         Publication-ready plots
 
 ## 🧪 Reproducibility
 
-* Fixed seeds
+* Fixed random seeds
 * Deterministic graph generation
 * Scripted experiments
 * CPU-only execution
@@ -290,7 +291,7 @@ All reported results are reproducible.
 
 ## 🏁 Final Statement
 
-**X-ORCH-6G** is a foundational research platform that treats **abstention, uncertainty, and governance** as core primitives in autonomous orchestration.
+**X-ORCH-6G** is a foundational research platform that treats **abstention, uncertainty, and governance** as first-class primitives in autonomous orchestration.
 
 It does not claim optimality.
 It claims **legitimacy, stability, and rigor**.
@@ -300,8 +301,8 @@ It claims **legitimacy, stability, and rigor**.
 ## 👤 Author
 
 **Lakshmi Chakradhar Vijayarao**
-AI / Systems / Networks Research
-MS Computer Science
+AI Systems · Distributed Systems · Networks Research
+M.S. Computer Science
 
 ---
 

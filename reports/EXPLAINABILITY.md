@@ -1,31 +1,69 @@
-# Explainability Analysis
+# 📄 `reports/EXPLAINABILITY.md`
 
-X-ORCH-6G integrates explainability as a diagnostic layer, not a control mechanism.
+```markdown
+# Explainability in X-ORCH-6G
 
----
+Explainability in X-ORCH-6G is **architectural**, not cosmetic.
 
-## Feature Attribution
-
-Permutation importance reveals that:
-- Load-related features dominate decisions
-- Time-dependent features influence scaling actions
-
-This confirms that policies respond to meaningful system variables.
+The system is designed to be interpretable by construction.
 
 ---
 
-## Counterfactual Reasoning
+## 1. Design Philosophy
 
-Example:
-- Increasing CPU load by +20% causes action flip from SCALE_UP to MIGRATE
+Explainability is used to:
+- Audit decisions
+- Understand uncertainty
+- Diagnose instability
 
-This demonstrates causal sensitivity rather than memorization.
+Explainability is **never** used to control actions.
 
 ---
 
-## Policy Tracing
+## 2. Interpretable State Design
+
+All agent observations are:
+- Fixed-size
+- Engineered
+- Human-readable
+
+No learned embeddings or opaque representations are used.
+
+---
+
+## 3. Policy Traces
 
 Each decision can be traced as:
+
+
+
 State → Action → Reward Components → Outcome
 
-This enables full auditability of orchestration behavior.
+
+This enables:
+- Post-hoc auditing
+- Failure analysis
+- Governance inspection
+
+---
+
+## 4. Counterfactual Reasoning
+
+Counterfactuals answer questions such as:
+- Would migration occur if latency increased?
+- Would abstention trigger if failure persisted longer?
+
+These analyses support **decision legitimacy**, not justification.
+
+---
+
+## 5. Optional LLM Usage
+
+LLMs may be used:
+- Post-hoc
+- Read-only
+- For human interpretation
+
+LLMs have **zero authority** over control decisions.
+
+This separation aligns with governance best practices.

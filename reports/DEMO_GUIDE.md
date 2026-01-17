@@ -1,24 +1,65 @@
-# X-ORCH-6G Demo Guide
+# Demo Guide: X-ORCH-6G
 
-## 5-Minute Demo (Interview)
+This guide explains how to run demonstrations of X-ORCH-6G and interpret
+their outputs.
 
-1. Run baselines
-2. Run PPO
-3. Run MARL
-4. Show stability metrics
-5. Explain NO_OP ablation
+The demos are designed for **understanding system behavior**, not for
+benchmarking performance.
 
-## 10-Minute Demo (Deep Dive)
+---
 
-+ Explainability example
-+ Counterfactual analysis
-+ Governance report
-+ LLM audit output
+## 1. Quick Demo
 
-## Commands
+Runs a short MARL episode with stress enabled.
 
 ```bash
-python -m experiments.run_baselines
-python -m experiments.run_ppo
-python -m experiments.run_marl
-python -m experiments.run_no_op_ablation
+python demos/demo_quick.py
+Purpose:
+
+Verify environment setup
+
+Observe basic orchestration behavior
+
+Confirm reproducibility
+
+## 2. Full Demo
+
+Runs a longer experiment with logging and metrics.
+
+python demos/demo_full.py
+
+
+Purpose:
+
+Observe recovery under stress
+
+Inspect stability metrics
+
+Generate plots for analysis
+
+3. What to Watch For
+
+During demos, pay attention to:
+
+Action switching frequency
+
+NO_OP usage under stress
+
+Latency spikes and recovery
+
+SLA violation patterns
+
+These behaviors illustrate why abstention and governance are necessary.
+
+4. What the Demo Is Not
+
+Not a real deployment
+
+Not a performance showcase
+
+Not tuned for maximum reward
+
+The demo exists to surface system dynamics, not hide them.
+
+
+---
